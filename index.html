@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Franse werkwoorden oefenen</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="card">
+        <h1>Franse werkwoorden leren</h1>
+        <section id="intro">
+            <p>Selecteer een werkwoord en een tijdsvorm om de volledige vervoegingen te zien, of start een simpele quiz.</p>
+        </section>
+
+        <div class="controls">
+            <label for="verbSelect">Werkwoord:</label>
+            <select id="verbSelect"></select>
+
+            <label for="tenseSelect">Tijdsvorm:</label>
+            <select id="tenseSelect">
+                <option value="present">Présent</option>
+                <option value="passé">Passé composé</option>
+                <option value="imparfait">Imparfait</option>
+                <option value="imperatif">Impératif</option>
+                <option value="futurProche">Futur proche</option>
+                <option value="futurSimple">Futur simple</option>
+                <option value="conditionnel">Conditionnel (futur du passé)</option>
+            </select>
+            <button id="showBtn">Toon vervoegingen</button>
+            <button id="quizBtn">Start quiz</button>
+        </div>
+
+        <section id="conjugation" class="hidden">
+            <h2 id="verbTitle"></h2>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr><th>Persoon</th><th>Vervoeging</th></tr>
+                    </thead>
+                    <tbody id="conjBody"></tbody>
+                </table>
+            </div>
+            <p id="translation"></p>
+        </section>
+
+        <section id="quiz" class="hidden">
+            <h2>Quiz</h2>
+            <p id="quizQuestion"></p>
+            <input type="text" id="quizAnswer" placeholder="Typ de vervoeging" autocomplete="off"/>
+            <button id="checkBtn">Controleren</button>
+            <p id="quizResult"></p>
+            <button id="nextBtn" class="hidden">Volgende</button>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
