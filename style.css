@@ -1,20 +1,26 @@
 body {
     background: #f4f7f9;
-    font-family: Arial, sans-serif;
-    margin: 20px;
-    background: #f9f9f9;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
     color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
 }
 
 h1 {
     text-align: center;
     color: #2c3e50;
+    font-size: 2rem;
+    margin-bottom: 1rem;
 }
 
 .controls {
     margin: 20px 0;
     display: flex;
-    gap: 10px;
+    gap: 12px;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
@@ -32,6 +38,70 @@ select, button, input {
 section.hidden {
     display: none;
 }
+
+/* Card container */
+.card {
+    background: #fff;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+button, select, input {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #fff;
+    transition: background 0.2s, border-color 0.2s;
+    min-width: 120px;
+}
+
+button:hover, select:hover, input:focus {
+    border-color: #2c3e50;
+    background: #f0f4f8;
+}
+
+button {
+    background: #2c3e50;
+    color: #fff;
+    cursor: pointer;
+}
+
+button:disabled {
+    background: #aaa;
+    cursor: not-allowed;
+}
+
+/* Translation text */
+#translation {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+}
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 1rem;
+}
+
+table th, table td {
+    border: none;
+    padding: 0.75rem 1rem;
+    text-align: left;
+}
+
+table th {
+    background: #eaeaea;
+    color: #333;
+}
+
+table tr:nth-child(even) td {
+    background: #f9fafb;
+}
+
 
 table {
     width: 100%;
