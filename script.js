@@ -1,5 +1,6 @@
 // script.js – dynamische Franse werkwoordensite
 // Data voor 24 werkwoorden (present, passé composé, imparfait, impératif, futur proche, futur simple, conditionnel)
+const allerPresent = ["vais","vas","va","allons","allez","vont"]; // present of aller
 const verbs = {
   "Aller": {
     translation: "gaan",
@@ -7,7 +8,7 @@ const verbs = {
     passeCompose: ["suis allé(e)", "es allé(e)", "est allé(e)", "sommes allés(es)", "êtes allés(es)", "sont allés(es)"],
     imparfait: ["allais", "allais", "allait", "allions", "alliez", "allaient"],
     imperatif: ["va", "allons", "allez"],
-    futurProche: "aller",
+    futurProche: ["vais aller","vas aller","va aller","allons aller","allez aller","vont aller"],
     futurSimple: ["irai", "iras", "ira", "irons", "irez", "iront"],
     conditionnel: ["irais", "irais", "irait", "irions", "iriez", "iraient"]
   },
@@ -17,7 +18,7 @@ const verbs = {
     passeCompose: ["ai eu", "as eu", "a eu", "avons eu", "avez eu", "ont eu"],
     imparfait: ["avais", "avais", "avait", "avions", "aviez", "avaient"],
     imperatif: ["aie", "ayons", "ayez"],
-    futurProche: "avoir",
+    futurProche: ["ai avoir","as avoir","a avoir","avons avoir","avez avoir","ont avoir"],
     futurSimple: ["aurai", "auras", "aura", "aurons", "aurez", "auront"],
     conditionnel: ["aurais", "aurais", "aurait", "aurions", "auriez", "auraient"]
   },
@@ -27,7 +28,7 @@ const verbs = {
     passeCompose: ["ai été", "as été", "a été", "avons été", "avez été", "ont été"],
     imparfait: ["étais", "étais", "était", "étions", "étiez", "étaient"],
     imperatif: ["sois", "soyons", "soyez"],
-    futurProche: "être",
+    futurProche: ["vais être","vas être","va être","allons être","allez être","vont être"],
     futurSimple: ["serai", "seras", "sera", "serons", "serez", "seront"],
     conditionnel: ["serais", "serais", "serait", "serions", "seriez", "seraient"]
   },
@@ -304,11 +305,13 @@ function showConjugation() {
   }
 
   if (tense === 'futurProche') {
-    // use aller + infinitive
+    // use correct present of "aller" + infinitive for each pronoun
     const infinitive = verbName === "Aller" ? "aller" : verbName.toLowerCase();
-    pronouns.forEach(p => {
+    // allerPresent array defined at top aligns with pronouns order
+    pronouns.forEach((p, idx) => {
       const tr = document.createElement('tr');
-      tr.innerHTML = `<td>${p}</td><td>vais ${infinitive}</td>`;
+      const aux = allerPresent[idx];
+      tr.innerHTML = `<td>${p}</td><td>${aux} ${infinitive}</td>`;
       conjBody.appendChild(tr);
     });
     return;
