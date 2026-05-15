@@ -367,7 +367,8 @@ function startQuiz() {
   if (tense === "futurProche") {
     const infinitive = verbName === "Aller" ? "aller" : verbName.toLowerCase();
     pronounIdx = Math.floor(Math.random()*pronouns.length);
-    answer = `vais ${infinitive}`;
+    const aux = allerPresent[pronounIdx];
+    answer = `${aux} ${infinitive}`;
   } else if (tense === "imperatif") {
     const imper = verb.imperatif;
     const imperMap = {3:0,4:1,5:2}; // pronoun indices for nous, vous
