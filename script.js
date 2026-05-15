@@ -330,7 +330,7 @@ function startQuiz() {
   const verbNames = Object.keys(verbs).filter(v=>!["Falloir","Pleuvoir","Suffire","En venir"].includes(v));
   const verbName = verbNames[Math.floor(Math.random()*verbNames.length)];
   const verb = verbs[verbName];
-  const tenses = ["present","passé","imparfait","futurSimple","conditionnel"];
+  const tenses = ["present","passeCompose","imparfait","futurSimple","conditionnel"];
   const tense = tenses[Math.floor(Math.random()*tenses.length)];
   const idx = Math.floor(Math.random()*6);
   const pronouns = ["je","tu","il/elle","nous","vous","ils/elles"];
