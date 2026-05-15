@@ -278,7 +278,7 @@ function showConjugation() {
 
   conjSection.classList.remove('hidden');
   quizSection.classList.add('hidden');
-  verbTitle.textContent = `${verbName} – ${tense}`;
+  verbTitle.textContent = `${verbName} – ${tenseLabels[tense] || tense}`;
   translationP.textContent = `Vertaling: ${verb.translation}`;
   conjBody.innerHTML = '';
 
@@ -326,31 +326,81 @@ function showConjugation() {
 }
 
 // Quiz functions
+// Mapping of tense keys to user-friendly labels
+let quizScore = 0;
+let totalAnswered = 0;
+function updateScoreDisplay() {
+  const scoreEl = document.getElementById('scoreDisplay');
+  if (scoreEl) {
+    scoreEl.textContent = `Score: ${quizScore}/${totalAnswered}`;
+  }
+}
+const tenseLabels = {
+  futurProche: "Futur proche",
+  imperatif: "Impératif",
+
+  present: "Présent",
+  passeCompose: "Passé composé",
+  imparfait: "Imparfait",
+  futurSimple: "Futur simple",
+  conditionnel: "Conditionnel (futur du passé)"
+};
 function startQuiz() {
-  const verbNames = Object.keys(verbs).filter(v=>!["Falloir","Pleuvoir","Suffire","En venir"].includes(v));
+  // Reset UI state
+  quizResult.textContent = '';
+  checkBtn.disabled = false;
+  nextBtn.disabled = true;
+  nextBtn.classList.add('hidden');
+
+  // Choose random verb and tense
+  const verbNames = Object.keys(verbs).filter(v => !["Falloir","Pleuvoir","Suffire","En venir"].includes(v));
   const verbName = verbNames[Math.floor(Math.random()*verbNames.length)];
   const verb = verbs[verbName];
-  const tenses = ["present","passeCompose","imparfait","futurSimple","conditionnel"];
+  const tenses = ["present","passeCompose","imparfait","futurProche","imperatif","futurSimple","conditionnel"];
   const tense = tenses[Math.floor(Math.random()*tenses.length)];
-  const idx = Math.floor(Math.random()*6);
   const pronouns = ["je","tu","il/elle","nous","vous","ils/elles"];
-  const answer = verb[tense][idx];
-  quizData = {verbName, tense, pronoun: pronouns[idx], answer};
+  let answer, pronounIdx;
 
+  if (tense === "futurProche") {
+    const infinitive = verbName === "Aller" ? "aller" : verbName.toLowerCase();
+    pronounIdx = Math.floor(Math.random()*pronouns.length);
+    answer = `vais ${infinitive}`;
+  } else if (tense === "imperatif") {
+    const imper = verb.imperatif;
+    const imperMap = {3:0,4:1,5:2}; // pronoun indices for nous, vous
+    pronounIdx = [3,4,5][Math.floor(Math.random()*3)];
+    answer = imper[imperMap[pronounIdx]];
+  } else {
+    const forms = verb[tense];
+    pronounIdx = Math.floor(Math.random()*6);
+    answer = forms[pronounIdx];
+  }
+
+  quizData = {verbName, tense, pronoun: pronouns[pronounIdx], answer};
   quizSection.classList.remove('hidden');
   conjSection.classList.add('hidden');
-  quizQuestion.textContent = `Vul in: ${quizData.pronoun} (${quizData.verbName}) – ${quizData.tense}`;
+  quizQuestion.textContent = `Vul in: ${quizData.pronoun} (${quizData.verbName}) – ${tenseLabels[quizData.tense] || quizData.tense}`;
   quizAnswer.value = '';
-  quizResult.textContent = '';
   nextBtn.classList.add('hidden');
 }
 
 function checkAnswer(){
+  // Disable further checks for this question
+  checkBtn.disabled = true;
   const user = quizAnswer.value.trim();
-  if(!user) return;
   const correct = quizData.answer;
   const ok = user.toLowerCase()===correct.toLowerCase();
-  quizResult.textContent = ok ? "✅ Correct!" : `❌ Niet correct. Juiste vorm: ${correct}`;
+  // If the input is empty, treat it as wrong
+  const isCorrect = user && ok;
+  quizResult.textContent = isCorrect ? "✅ Correct!" : `❌ Niet correct. Juiste vorm: ${correct}`;
+  // Increment total answered count
+  totalAnswered++;
+  if (isCorrect) {
+    quizScore++;
+  }
+  updateScoreDisplay();
+  // Show next button only after answering
+  nextBtn.disabled = false;
   nextBtn.classList.remove('hidden');
 }
 
@@ -358,3 +408,4 @@ showBtn.addEventListener('click', showConjugation);
 quizBtn.addEventListener('click', startQuiz);
 checkBtn.addEventListener('click', checkAnswer);
 nextBtn.addEventListener('click', startQuiz);
+updateScoreDisplay();
