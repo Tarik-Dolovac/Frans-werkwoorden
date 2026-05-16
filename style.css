@@ -82,13 +82,12 @@ button:disabled {
 /* Table styling */
 table {
     width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
+    border-collapse: collapse;
     margin-top: 1rem;
 }
 
 table th, table td {
-    border: none;
+    border: 1px solid #ccc;
     padding: 0.75rem 1rem;
     text-align: left;
 }
@@ -100,21 +99,4 @@ table th {
 
 table tr:nth-child(even) td {
     background: #f9fafb;
-}
-
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-}
-
-table th, table td {
-    border: 1px solid #ccc;
-    padding: 8px;
-    text-align: left;
-}
-
-table th {
-    background: #eaeaea;
 }

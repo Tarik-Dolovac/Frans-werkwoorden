@@ -38,7 +38,6 @@ const verbs = {
     passeCompose: ["ai fait", "as fait", "a fait", "avons fait", "avez fait", "ont fait"],
     imparfait: ["faisais", "faisais", "faisait", "faisions", "faisiez", "faisaient"],
     imperatif: ["fais", "faisons", "faites"],
-    futurProche: "faire",
     futurSimple: ["ferai", "feras", "fera", "ferons", "ferez", "feront"],
     conditionnel: ["ferais", "ferais", "ferait", "ferions", "feriez", "feraient"]
   },
@@ -48,7 +47,6 @@ const verbs = {
     passeCompose: ["ai pu", "as pu", "a pu", "avons pu", "avez pu", "ont pu"],
     imparfait: ["pouvais", "pouvais", "pouvait", "pouvions", "pouviez", "pouvaient"],
     imperatif: ["peux", "pouvons", "pouvez"],
-    futurProche: "pouvoir",
     futurSimple: ["pourrai", "pourras", "pourra", "pourrons", "pourrez", "pourront"],
     conditionnel: ["pourrais", "pourrais", "pourrait", "pourrions", "pourriez", "pourraient"]
   },
@@ -58,8 +56,7 @@ const verbs = {
     passeCompose: ["ai su", "as su", "a su", "avons su", "avez su", "ont su"],
     imparfait: ["savais", "savais", "savait", "savions", "saviez", "savaient"],
     imperatif: ["sache", "savons", "savez"],
-    futurProche: "savoir",
-    futurSimple: ["saurai", "sauras", "saurra", "saurons", "serez", "sauront"],
+    futurSimple: ["saurai", "sauras", "saura", "saurons", "saurez", "sauront"],
     conditionnel: ["saurais", "saurais", "saurait", "saurions", "sauriez", "sauraient"]
   },
   "Voir": {
@@ -68,7 +65,6 @@ const verbs = {
     passeCompose: ["ai vu", "as vu", "a vu", "avons vu", "avez vu", "ont vu"],
     imparfait: ["voyais", "voyais", "voyait", "voyions", "voyiez", "voyaient"],
     imperatif: ["vois", "voyons", "voyez"],
-    futurProche: "voir",
     futurSimple: ["verrai", "verras", "verra", "verrons", "verrez", "verront"],
     conditionnel: ["verrais", "verrais", "verrait", "verrions", "verriez", "verraient"]
   },
@@ -78,7 +74,6 @@ const verbs = {
     passeCompose: ["ai voulu", "as voulu", "a voulu", "avons voulu", "avez voulu", "ont voulu"],
     imparfait: ["voulais", "voulais", "voulais", "voulions", "vouliez", "voulaient"],
     imperatif: ["veuille", "voulons", "voulez"],
-    futurProche: "vouloir",
     futurSimple: ["voudrai", "voudras", "voudra", "voudrons", "voudrez", "voudront"],
     conditionnel: ["voudrais", "voudrais", "voudrait", "voudrions", "voudriez", "voudraient"]
   },
@@ -86,9 +81,8 @@ const verbs = {
     translation: "drinken",
     present: ["bois", "bois", "boit", "buvons", "buvez", "boivent"],
     passeCompose: ["ai bu", "as bu", "a bu", "avons bu", "avez bu", "ont bu"],
-    imparfait: ["bus", "bus", "buvait", "buvions", "buviez", "buvaient"],
+    imparfait: ["buvais", "buvais", "buvait", "buvions", "buviez", "buvaient"],
     imperatif: ["bois", "buvons", "buvez"],
-    futurProche: "boire",
     futurSimple: ["boirai", "boiras", "boira", "boirons", "boirez", "boiront"],
     conditionnel: ["boirais", "boirais", "boirait", "boirions", "boiriez", "boiraient"]
   },
@@ -98,7 +92,6 @@ const verbs = {
     passeCompose: ["ai connu", "as connu", "a connu", "avons connu", "avez connu", "ont connu"],
     imparfait: ["connaissais", "connaissais", "connaissait", "connaissions", "connaissiez", "connaissaient"],
     imperatif: ["connais", "connaissons", "connaissez"],
-    futurProche: "connaître",
     futurSimple: ["connaîtrai", "connaîtras", "connaîtra", "connaîtrons", "connaîtrez", "connaîtront"],
     conditionnel: ["connaîtrais", "connaîtrais", "connaîtrait", "connaîtrions", "connaîtriez", "connaîtraient"]
   },
@@ -108,8 +101,7 @@ const verbs = {
     passeCompose: ["ai dû", "as dû", "a dû", "avons dû", "avez dû", "ont dû"],
     imparfait: ["devais", "devais", "devait", "devions", "deviez", "devaient"],
     imperatif: ["dois", "devons", "devez"],
-    futurProche: "devoir",
-    futurSimple: ["devrai", "devras", "devra", "devrons", "devoirez", "devront"],
+    futurSimple: ["devrai", "devras", "devra", "devrons", "devrez", "devront"],
     conditionnel: ["devrais", "devrais", "devrait", "devrions", "devriez", "devraient"]
   },
   "Recevoir": {
@@ -118,7 +110,6 @@ const verbs = {
     passeCompose: ["ai reçu", "as reçu", "a reçu", "avons reçu", "avez reçu", "ont reçu"],
     imparfait: ["recevais", "recevais", "recevait", "recevions", "receviez", "recevaient"],
     imperatif: ["reçois", "recevons", "recevez"],
-    futurProche: "recevoir",
     futurSimple: ["recevrai", "recevras", "recevra", "recevrons", "recevrez", "recevront"],
     conditionnel: ["recevrais", "recevrais", "recevrait", "recevrions", "recevriez", "recevraient"]
   },
@@ -128,7 +119,6 @@ const verbs = {
     passeCompose: ["ai conduit", "as conduit", "a conduit", "avons conduit", "avez conduit", "ont conduit"],
     imparfait: ["conduisais", "conduisais", "conduisait", "conduisions", "conduisiez", "conduisaient"],
     imperatif: ["conduis", "conduisons", "conduisez"],
-    futurProche: "conduire",
     futurSimple: ["conduirai", "conduiras", "conduira", "conduirons", "conduirez", "conduiront"],
     conditionnel: ["conduirais", "conduirais", "conduirait", "conduirions", "conduiriez", "conduiraient"]
   },
@@ -138,7 +128,6 @@ const verbs = {
     passeCompose: ["ai dit", "as dit", "a dit", "avons dit", "avez dit", "ont dit"],
     imparfait: ["disais", "disais", "disait", "disions", "disiez", "disaient"],
     imperatif: ["dis", "disons", "dites"],
-    futurProche: "dire",
     futurSimple: ["dirai", "diras", "dira", "dirons", "direz", "diront"],
     conditionnel: ["dirais", "dirais", "dirait", "dirions", "diriez", "diraient"]
   },
@@ -148,7 +137,6 @@ const verbs = {
     passeCompose: ["ai mis", "as mis", "a mis", "avons mis", "avez mis", "ont mis"],
     imparfait: ["mettais", "mettais", "mettait", "mettions", "mettiez", "mettaient"],
     imperatif: ["mets", "mettons", "mettez"],
-    futurProche: "mettre",
     futurSimple: ["mettrai", "mettras", "mettra", "mettrons", "mettrez", "mettront"],
     conditionnel: ["mettrais", "mettrais", "mettrait", "mettrions", "mettriez", "mettraient"]
   },
@@ -158,7 +146,6 @@ const verbs = {
     passeCompose: ["ai pris", "as pris", "a pris", "avons pris", "avez pris", "ont pris"],
     imparfait: ["prenais", "prenais", "prenait", "prenions", "preniez", "prenaient"],
     imperatif: ["prends", "prenons", "prenez"],
-    futurProche: "prendre",
     futurSimple: ["prendrai", "prendras", "prendra", "prendrons", "prendrez", "prendront"],
     conditionnel: ["prendrais", "prendrais", "prendrait", "prendrions", "prendriez", "prendraient"]
   },
@@ -168,7 +155,6 @@ const verbs = {
     passeCompose: ["suis parti(e)", "es parti(e)", "est parti(e)", "sommes partis(es)", "êtes partis(es)", "sont partis(es)"],
     imparfait: ["partais", "partais", "partait", "partions", "partiez", "partaient"],
     imperatif: ["pars", "partons", "partez"],
-    futurProche: "partir",
     futurSimple: ["partirai", "partiras", "partira", "partirons", "partirez", "partiront"],
     conditionnel: ["partirais", "partirais", "partirait", "partirions", "partiriez", "partiraient"]
   },
@@ -178,7 +164,6 @@ const verbs = {
     passeCompose: ["ai tenu", "as tenu", "a tenu", "avons tenu", "avez tenu", "ont tenu"],
     imparfait: ["tenais", "tenais", "tenait", "tenions", "teniez", "tenaient"],
     imperatif: ["tiens", "tenons", "tenez"],
-    futurProche: "tenir",
     futurSimple: ["tiendrai", "tiendras", "tiendra", "tiendrons", "tiendrez", "tiendront"],
     conditionnel: ["tiendrais", "tiendrais", "tiendrait", "tiendrions", "tiendriez", "tiendraient"]
   },
@@ -188,7 +173,6 @@ const verbs = {
     passeCompose: ["ai vécu", "as vécu", "a vécu", "avons vécu", "avez vécu", "ont vécu"],
     imparfait: ["vivais", "vivais", "vivait", "vivions", "viviez", "vivaient"],
     imperatif: ["vis", "vivons", "vivez"],
-    futurProche: "vivre",
     futurSimple: ["vivrai", "vivras", "vivra", "vivrons", "vivrez", "vivront"],
     conditionnel: ["vivrais", "vivrais", "vivrait", "vivrions", "vivriez", "vivraient"]
   },
@@ -196,9 +180,8 @@ const verbs = {
     translation: "geloven",
     present: ["crois", "crois", "croit", "croyons", "croyez", "croient"],
     passeCompose: ["ai cru", "as cru", "a cru", "avons cru", "avez cru", "ont cru"],
-    imparfait: ["croisais", "croisais", "croisait", "croisions", "croisiez", "croisaient"],
+    imparfait: ["croyais", "croyais", "croyait", "croyions", "croyiez", "croyaient"],
     imperatif: ["crois", "croyons", "croyez"],
-    futurProche: "croire",
     futurSimple: ["croirai", "croiras", "croira", "croirons", "croirez", "croiront"],
     conditionnel: ["croirais", "croirais", "croirait", "croirions", "croiriez", "croiraient"]
   },
@@ -207,7 +190,6 @@ const verbs = {
     present: ["faut"],
     passeCompose: ["a fallu"],
     imparfait: ["fallait"],
-    futurProche: "va falloir",
     futurSimple: ["faudra"],
     conditionnel: ["faudrait"]
   },
@@ -216,7 +198,6 @@ const verbs = {
     present: ["pleut"],
     passeCompose: ["a plu"],
     imparfait: ["pleuvait"],
-    futurProche: "va pleuvoir",
     futurSimple: ["pleuvra"],
     conditionnel: ["pleuvrait"]
   },
@@ -225,7 +206,6 @@ const verbs = {
     present: ["suffit"],
     passeCompose: ["a suffi"],
     imparfait: ["suffisait"],
-    futurProche: "va suffire",
     futurSimple: ["suffira"],
     conditionnel: ["suffirait"]
   },
@@ -235,7 +215,6 @@ const verbs = {
     passeCompose: ["suis venu(e)", "es venu(e)", "est venu(e)", "sommes venus(es)", "êtes venus(es)", "sont venus(es)"],
     imparfait: ["venais", "venais", "venait", "venions", "veniez", "venaient"],
     imperatif: ["viens", "venons", "venez"],
-    futurProche: "aller venir",
     futurSimple: ["viendrai", "viendras", "viendra", "viendrons", "viendrez", "viendront"],
     conditionnel: ["viendrais", "viendrais", "viendrait", "viendrions", "viendriez", "viendraient"]
   }
