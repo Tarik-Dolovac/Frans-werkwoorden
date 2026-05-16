@@ -284,6 +284,12 @@ function showConjugation() {
   conjBody.innerHTML = '';
 
   const pronouns = ["je", "tu", "il/elle", "nous", "vous", "ils/elles"];
+// Helper to contract "je" when the following verb form starts with a vowel or mute h
+function formatPronoun(pronoun, verbForm) {
+  if (pronoun !== "je") return pronoun;
+  const firstChar = verbForm && verbForm[0] ? verbForm[0].toLowerCase() : "";
+  return ("aeiouh".includes(firstChar)) ? "j'" : "je";
+}
 
   // Impersonals
   if (["Falloir","Pleuvoir","Suffire"].includes(verbName)) {
@@ -311,7 +317,7 @@ function showConjugation() {
     pronouns.forEach((p, idx) => {
       const tr = document.createElement('tr');
       const aux = allerPresent[idx];
-      tr.innerHTML = `<td>${p}</td><td>${aux} ${infinitive}</td>`;
+      tr.innerHTML = `<td>${formatPronoun(p, `${aux} ${infinitive}`)}</td><td>${aux} ${infinitive}</td>`;
       conjBody.appendChild(tr);
     });
     return;
@@ -323,7 +329,7 @@ function showConjugation() {
   if (!Array.isArray(forms)) forms = [];
   forms.forEach((f,i)=>{
     const tr = document.createElement('tr');
-    tr.innerHTML = `<td>${pronouns[i]}</td><td>${f}</td>`;
+    tr.innerHTML = `<td>${formatPronoun(pronouns[i], f)}</td><td>${f}</td>`;
     conjBody.appendChild(tr);
   });
 }
@@ -383,7 +389,7 @@ function startQuiz() {
   quizData = {verbName, tense, pronoun: pronouns[pronounIdx], answer};
   quizSection.classList.remove('hidden');
   conjSection.classList.add('hidden');
-  quizQuestion.textContent = `Vul in: ${quizData.pronoun} (${quizData.verbName}) – ${tenseLabels[quizData.tense] || quizData.tense}`;
+  quizQuestion.textContent = `Vul in: ${formatPronoun(quizData.pronoun, quizData.answer)} (${quizData.verbName}) – ${tenseLabels[quizData.tense] || quizData.tense}`;
   quizAnswer.value = '';
   nextBtn.classList.add('hidden');
 }
