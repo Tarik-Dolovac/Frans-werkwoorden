@@ -287,8 +287,10 @@ function showConjugation() {
 // Helper to contract "je" when the following verb form starts with a vowel or mute h
 function formatPronoun(pronoun, verbForm) {
   if (pronoun !== "je") return pronoun;
-  const firstChar = verbForm && verbForm[0] ? verbForm[0].toLowerCase() : "";
-  return ("aeiouh".includes(firstChar)) ? "j'" : "je";
+  if (!verbForm) return pronoun;
+  const firstChar = verbForm[0];
+  const vowels = "aeiouhAEIOUHáàâäãåéèêëíìîïóòôöõúùûüýÿÁÀÂÄÃÅÉÈÊËÍÌÎÏÓÒÔÖÕÚÙÛÜÝŸ";
+  return vowels.includes(firstChar) ? "j'" : "je";
 }
 
   // Impersonals
