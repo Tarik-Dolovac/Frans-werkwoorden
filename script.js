@@ -72,8 +72,8 @@ const verbs = {
     translation: "willen",
     present: ["veux", "veux", "veut", "voulons", "voulez", "veulent"],
     passeCompose: ["ai voulu", "as voulu", "a voulu", "avons voulu", "avez voulu", "ont voulu"],
-    imparfait: ["voulais", "voulais", "voulais", "voulions", "vouliez", "voulaient"],
-    imperatif: ["veuille", "voulons", "voulez"],
+    imparfait: ["voulais", "voulais", "voulait", "voulions", "vouliez", "voulaient"],
+    imperatif: ["veuille", "voulons", "veuillez"],
     futurSimple: ["voudrai", "voudras", "voudra", "voudrons", "voudrez", "voudront"],
     conditionnel: ["voudrais", "voudrais", "voudrait", "voudrions", "voudriez", "voudraient"]
   },
@@ -209,7 +209,7 @@ const verbs = {
     futurSimple: ["suffira"],
     conditionnel: ["suffirait"]
   },
-  "En venir": {
+  "En komen": {
     translation: "komen / voortkomen uit",
     present: ["viens", "viens", "vient", "venons", "venez", "viennent"],
     passeCompose: ["suis venu(e)", "es venu(e)", "est venu(e)", "sommes venus(es)", "êtes venus(es)", "sont venus(es)"],
@@ -219,6 +219,15 @@ const verbs = {
     conditionnel: ["viendrais", "viendrais", "viendrait", "viendrions", "viendriez", "viendraient"]
   }
 };
+
+// Helper to contract "je" when the following verb form starts with a vowel or mute h
+function formatPronoun(pronoun, verbForm) {
+  if (pronoun !== "je") return pronoun;
+  if (!verbForm) return pronoun;
+  const firstChar = verbForm[0];
+  const vowels = "aeiouhAEIOUHáàâäãåéèêëíìîïóòôöõúùûüýÿÁÀÂÄÃÅÉÈÊËÍÌÎÏÓÒÔÖÕÚÙÛÜÝŸ";
+  return vowels.includes(firstChar) ? "j'" : "je";
+}
 
 // ---------- DOM elements ----------
 const verbSelect = document.getElementById('verbSelect');
@@ -263,14 +272,6 @@ function showConjugation() {
   conjBody.innerHTML = '';
 
   const pronouns = ["je", "tu", "il/elle", "nous", "vous", "ils/elles"];
-// Helper to contract "je" when the following verb form starts with a vowel or mute h
-function formatPronoun(pronoun, verbForm) {
-  if (pronoun !== "je") return pronoun;
-  if (!verbForm) return pronoun;
-  const firstChar = verbForm[0];
-  const vowels = "aeiouhAEIOUHáàâäãåéèêëíìîïóòôöõúùûüýÿÁÀÂÄÃÅÉÈÊËÍÌÎÏÓÒÔÖÕÚÙÛÜÝŸ";
-  return vowels.includes(firstChar) ? "j'" : "je";
-}
 
   // Impersonals
   if (["Falloir","Pleuvoir","Suffire"].includes(verbName)) {
@@ -325,6 +326,16 @@ function updateScoreDisplay() {
     scoreEl.textContent = `Score: ${quizScore}/${totalAnswered}`;
   }
 }
+// Helper to get answer variants (handling optional letters in parentheses)
+function getAnswerVariants(answer) {
+  const match = answer.match(/(.*)\((.*)\)(.*)/);
+  if (!match) return [answer];
+  const [, before, inside, after] = match;
+  const base = before + after;
+  const withOption = before + inside + after;
+  // Use Set to avoid duplicates if inside is empty
+  return [...new Set([base, withOption])];
+}
 const tenseLabels = {
   futurProche: "Futur proche",
   imperatif: "Impératif",
@@ -336,14 +347,28 @@ const tenseLabels = {
   conditionnel: "Conditionnel (futur du passé)"
 };
 function startQuiz() {
+  // Reset score for new quiz session
+  quizScore = 0;
+  totalAnswered = 0;
+  updateScoreDisplay();
   // Reset UI state
   quizResult.textContent = '';
   checkBtn.disabled = false;
   nextBtn.disabled = true;
   nextBtn.classList.add('hidden');
 
+  // Load first question
+  loadNextQuestion();
+}
+
+function loadNextQuestion() {
+  // Reset UI state for new question
+  quizResult.textContent = '';
+  checkBtn.disabled = false;
+  nextBtn.classList.add('hidden');
+
   // Choose random verb and tense
-  const verbNames = Object.keys(verbs).filter(v => !["Falloir","Pleuvoir","Suffire","En venir"].includes(v));
+  const verbNames = Object.keys(verbs).filter(v => !["Falloir","Pleuvoir","Suffire","En komen"].includes(v));
   const verbName = verbNames[Math.floor(Math.random()*verbNames.length)];
   const verb = verbs[verbName];
   const tenses = ["present","passeCompose","imparfait","futurProche","imperatif","futurSimple","conditionnel"];
@@ -372,7 +397,6 @@ function startQuiz() {
   conjSection.classList.add('hidden');
   quizQuestion.textContent = `Vul in: ${formatPronoun(quizData.pronoun, quizData.answer)} (${quizData.verbName}) – ${tenseLabels[quizData.tense] || quizData.tense}`;
   quizAnswer.value = '';
-  nextBtn.classList.add('hidden');
 }
 
 function checkAnswer(){
@@ -380,7 +404,9 @@ function checkAnswer(){
   checkBtn.disabled = true;
   const user = quizAnswer.value.trim();
   const correct = quizData.answer;
-  const ok = user.toLowerCase()===correct.toLowerCase();
+  const correctVariants = getAnswerVariants(correct);
+  // Check if user answer matches any variant (case insensitive)
+  const ok = correctVariants.some(variant => user.toLowerCase() === variant.toLowerCase());
   // If the input is empty, treat it as wrong
   const isCorrect = user && ok;
   quizResult.textContent = isCorrect ? "✅ Correct!" : `❌ Niet correct. Juiste vorm: ${correct}`;
@@ -398,5 +424,5 @@ function checkAnswer(){
 showBtn.addEventListener('click', showConjugation);
 quizBtn.addEventListener('click', startQuiz);
 checkBtn.addEventListener('click', checkAnswer);
-nextBtn.addEventListener('click', startQuiz);
+nextBtn.addEventListener('click', loadNextQuestion);
 updateScoreDisplay();
