@@ -425,4 +425,16 @@ showBtn.addEventListener('click', showConjugation);
 quizBtn.addEventListener('click', startQuiz);
 checkBtn.addEventListener('click', checkAnswer);
 nextBtn.addEventListener('click', loadNextQuestion);
+
+// Enter key support for quiz
+quizAnswer.addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') {
+    if (!checkBtn.disabled) {
+      checkAnswer();
+    } else if (!nextBtn.disabled) {
+      loadNextQuestion();
+    }
+  }
+});
+
 updateScoreDisplay();
