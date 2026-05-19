@@ -209,7 +209,7 @@ const verbs = {
     futurSimple: ["suffira"],
     conditionnel: ["suffirait"]
   },
-  "En komen": {
+  "Venir": {
     translation: "komen / voortkomen uit",
     present: ["viens", "viens", "vient", "venons", "venez", "viennent"],
     passeCompose: ["suis venu(e)", "es venu(e)", "est venu(e)", "sommes venus(es)", "êtes venus(es)", "sont venus(es)"],
@@ -368,7 +368,7 @@ function loadNextQuestion() {
   nextBtn.classList.add('hidden');
 
   // Choose random verb and tense
-  const verbNames = Object.keys(verbs).filter(v => !["Falloir","Pleuvoir","Suffire","En komen"].includes(v));
+  const verbNames = Object.keys(verbs).filter(v => !["Falloir","Pleuvoir","Suffire","Venir"].includes(v));
   const verbName = verbNames[Math.floor(Math.random()*verbNames.length)];
   const verb = verbs[verbName];
   const tenses = ["present","passeCompose","imparfait","futurProche","imperatif","futurSimple","conditionnel"];
