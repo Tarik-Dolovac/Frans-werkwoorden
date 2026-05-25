@@ -526,8 +526,11 @@ function loadNextQuestion() {
     answer = `${aux} ${infinitive}`;
   } else if (tense === "imperatif") {
     const imper = verb.imperatif;
-    const imperMap = {3:0,4:1,5:2}; // pronoun indices for nous, vous
-    pronounIdx = [3,4,5][Math.floor(Math.random()*3)];
+    // imperative only has tu, nous, vous forms (indices 0, 1, 2 in imper array)
+    // corresponding to pronoun indices 1, 3, 4 in the pronouns array
+    const imperMap = {1:0,3:1,4:2}; // tu:imper[0], nous:imper[1], vous:imper[2]
+    const pronounOptions = [1,3,4]; // tu, nous, vous
+    pronounIdx = pronounOptions[Math.floor(Math.random()*pronounOptions.length)];
     answer = imper[imperMap[pronounIdx]];
   } else {
     const forms = verb[tense];
