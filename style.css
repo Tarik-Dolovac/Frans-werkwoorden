@@ -231,6 +231,44 @@ tr:hover td {
     border-left: 4px solid var(--primary-color);
 }
 
+/* Examples section */
+#examplesSection {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+#examplesSection h3 {
+    color: var(--primary-color);
+    margin-bottom: 12px;
+    font-size: 1.2rem;
+}
+
+#examples {
+    background: #f8f9ff;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 0.95rem;
+}
+
+.example-item {
+    margin-bottom: 8px;
+    padding: 8px;
+    background: white;
+    border-radius: 4px;
+    border-left: 3px solid var(--accent-color);
+}
+
+.example-fr {
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.example-nl {
+    color: #5f6368;
+    font-style: italic;
+}
+
 #quiz {
     text-align: center;
 }
@@ -283,6 +321,26 @@ tr:hover td {
     min-width: 100px;
 }
 
+#hintBtn {
+    background: linear-gradient(to bottom, #f59e0b, #d97706);
+    color: white;
+    min-width: 80px;
+    font-size: 0.9rem;
+}
+
+#hintBtn:hover {
+    background: linear-gradient(to bottom, #d97706, #f59e0b);
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+}
+
+#hintDisplay {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #6b7280;
+    margin-top: 8px;
+    min-height: 20px;
+}
+
 #checkBtn:hover {
     background: linear-gradient(to bottom, #059669, #10b981);
     box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
@@ -322,6 +380,86 @@ footer {
     font-size: 0.9rem;
     border-top: 1px solid #e2e8f0;
     margin-top: 30px;
+}
+
+/* Update Log Button */
+.update-log-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(to bottom, #ff9f1c, #e07a00);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-speed);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.update-log-btn:hover {
+    background: linear-gradient(to bottom, #e07a00, #ff9f1c);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 159, 28, 0.3);
+}
+
+.update-log-btn:active {
+    transform: translateY(0);
+}
+
+/* Update Log Modal */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: var(--card-background);
+    margin: 5% auto;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    width: 80%;
+    max-width: 500px;
+    position: relative;
+    box-shadow: var(--box-shadow);
+    animation: modalFadeIn 0.3s;
+}
+
+@keyframes modalFadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.close-btn {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: var(--text-color);
+    text-decoration: none;
+    cursor: pointer;
 }
 
 @media (max-width: 768px) {
