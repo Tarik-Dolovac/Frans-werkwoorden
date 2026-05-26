@@ -312,12 +312,13 @@ const verbs = {
     ]
   },
   "Suffire": {
-    translation: "volstaan, genoeg zijn (onpersoonlijk)",
-    present: ["suffit"],
-    passeCompose: ["a suffi"],
-    imparfait: ["suffisait"],
-    futurSimple: ["suffira"],
-    conditionnel: ["suffirait"],
+    translation: "volstaan, genoeg zijn",
+    present: ["suffis", "suffis", "suffit", "suffisons", "suffisez", "suffisent"],
+    passeCompose: ["ai suffi", "as suffi", "a suffi", "avons suffi", "avez suffi", "ont suffi"],
+    imparfait: ["suffisais", "suffisais", "suffisait", "suffisions", "suffisiez", "suffisaient"],
+    imperatif: ["suffis", "suffisons", "suffisez"],
+    futurSimple: ["suffirai", "suffiras", "suffira", "suffirons", "suffirez", "suffiront"],
+    conditionnel: ["suffirais", "suffirais", "suffirait", "suffirions", "suffiriez", "suffiraient"],
     examples: [
       {fr: "Ça suffit comme ça.", nl: "Het is genoeg zo."},
       {fr: "Un verre d'eau suffit à étancher sa soif.", nl: "Een glas water is voldoende om zijn dorst te lessen."},
@@ -393,8 +394,9 @@ function showConjugation() {
 
   const pronouns = ["je", "tu", "il/elle", "nous", "vous", "ils/elles"];
 
-  // Impersonals
-  if (["Falloir","Pleuvoir","Suffire"].includes(verbName)) {
+  // Handle impersonal verbs differently
+  if (["Falloir","Pleuvoir"].includes(verbName)) {
+    // Falloir and Pleuvoir: only show il/elle form
     const tr = document.createElement('tr');
     tr.innerHTML = `<td>il/elle</td><td>${verb[tense][0]}</td>`;
     conjBody.appendChild(tr);
@@ -507,6 +509,7 @@ function startQuiz() {
 function loadNextQuestion() {
   // Reset UI state for new question
   quizResult.textContent = '';
+  hintDisplay.textContent = '';
   checkBtn.disabled = false;
   nextBtn.classList.add('hidden');
 
@@ -607,27 +610,34 @@ function showHint() {
   }
 }
 
-// Open modal
-updateLogBtn.addEventListener('click', async () => {
-  await loadUpdateLog();
-  updateLogModal.style.display = 'block';
-});
 
-// Close modal
-closeBtn.addEventListener('click', () => {
-  updateLogModal.style.display = 'none';
-});
-
-// Close when clicking outside of modal content
-window.addEventListener('click', (e) => {
-  if (e.target === updateLogModal) {
-    updateLogModal.style.display = 'none';
-  }
-});
+// Remove erroneous code that references non-existent elements
 
 // Hint button click
 hintBtn.addEventListener('click', showHint);
 
 // Also support Enter key in hint? Not needed.
+
+// Tense Words Modal functionality
+const tenseWordBtn = document.getElementById('tenseWordBtn');
+const tenseWordModal = document.getElementById('tenseWordModal');
+const tenseWordCloseBtn = tenseWordModal.querySelector('.close-btn');
+
+// Open tense words modal
+tenseWordBtn.addEventListener('click', () => {
+  tenseWordModal.style.display = 'block';
+});
+
+// Close tense words modal
+tenseWordCloseBtn.addEventListener('click', () => {
+  tenseWordModal.style.display = 'none';
+});
+
+// Close when clicking outside of modal content
+window.addEventListener('click', (e) => {
+  if (e.target === tenseWordModal) {
+    tenseWordModal.style.display = 'none';
+  }
+});
 
 updateScoreDisplay();

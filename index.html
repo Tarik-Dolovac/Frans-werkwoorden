@@ -10,6 +10,84 @@
 <body>
     
     <div class="container">
+        <!-- Tense Words Modal -->
+        <div id="tenseWordModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <h2>Franse Tijdswoorden</h2>
+                <p>Gebruik deze woorden om de juiste tijdsvorm te bepalen:</p>
+                <div class="tense-words-list">
+                    <p><strong>Verleden tijd (Passé composé/Imparfait):</strong></p>
+                    <ul>
+                        <li>hier - gisteren (passé composé/imparfait)</li>
+                        <li>avant - eerder (passé composé/imparfait)</li>
+                        <li>déjà - al (passé composé)</li>
+                        <li>autrefois - vroeger (imparfait)</li>
+                        <li>récemment - recentelijk (passé composé)</li>
+                        <li>l'année dernière - vorig jaar (passé composé)</li>
+                        <li>le mois dernier - vorige maand (passé composé)</li>
+                        <li>la semaine dernière - vorige week (passé composé)</li>
+                        <li>il y a... - ... geleden (passé composé)</li>
+                        <li>quand j'étais petit/jeune - toen ik klein/jong was (imparfait)</li>
+                    </ul>
+
+                    <p><strong>Tegenwoordige tijd (Présent):</strong></p>
+                    <ul>
+                        <li>maintenant - nu (présent)</li>
+                        <li>actuellement - momenteel (présent)</li>
+                        <li>aujourd'hui - vandaag (présent)</li>
+                        <li>ce matin - vanochtend (présent)</li>
+                        <li>cet après-midi - vanmiddag (présent)</li>
+                        <li>ce soir - vanavond (présent)</li>
+                        <li>tout de suite - meteen / zo dadelijk (présent)</li>
+                        <li>en ce moment - op dit moment (présent)</li>
+                        <li>dans un instant - over een ogenblik (présent)</li>
+                    </ul>
+
+                    <p><strong>Toekomende tijd (Futur simple/Futur proche):</strong></p>
+                    <ul>
+                        <li>demain - morgen (futur simple/futur proche)</li>
+                        <li>bientôt - binnenkort (futur simple/futur proche)</li>
+                        <li>dans une heure - over een uur (futur simple/futur proche)</li>
+                        <li>dans deux jours - over twee dagen (futur simple/futur proche)</li>
+                        <li>la semaine prochaine - volgende week (futur simple/futur proche)</li>
+                        <li>le mois prochain - volgende maand (futur simple/futur proche)</li>
+                        <li>l'année prochaine - volgend jaar (futur simple/futur proche)</li>
+                        <li>plus tard - later (futur simple/futur proche)</li>
+                        <li>un jour - op een dag (futur simple, kan ook verleden betekenen: ooit)</li>
+                        <li>un de ces jours - op een van deze dagen (futur simple)</li>
+                        <li>dans le futur - in de toekomst (futur simple)</li>
+                        <li>à l'avenir - in de toekomst (futur simple)</li>
+                    </ul>
+
+                    <p><strong>Nabije toekomst / recent verleden:</strong></p>
+                    <ul>
+                        <li>dans peu de temps - binnenkort / over korte tijd (futur proche, kan ook recent verleden betekenen)</li>
+                        <li>finalement - uiteindelijk / ten slotte (kan verschillende tijden gebruiken)</li>
+                    </ul>
+
+                    <p><strong>Frequentie (werkt met alle tijden):</strong></p>
+                    <ul>
+                        <li>d'habitude - meestal / gewoonlijk (alle tijden)</li>
+                        <li>fréquemment - regelmatig / veelvuldig (alle tijden)</li>
+                        <li>souvent - vaak (alle tijden)</li>
+                        <li>parfois - soms (alle tijden)</li>
+                        <li>rarement - zelden (alle tijden)</li>
+                        <li>jamais - nooit (alle tijden)</li>
+                        <li>toujours - altijd (alle tijden)</li>
+                        <li>normalement - normaal / meestal (alle tijden)</li>
+                        <li>généralement - meestal / over het algemeen (alle tijden)</li>
+                    </ul>
+                </div>
+                <p><em>Tip: Belangrijke combinaties:
+                    <br>• "quand" + imparfait/passé composé → verleden tijd
+                    <br>• "si" + présent + futur simple → voorwaardelijke zin
+                    <br>• "aller" + infinitief → futur proche (bijv. je vais partir = ik ga vertrekken)
+                    <br>• "depuis" + présent → iets dat begon in verleden en nog doorgaat (bijv. j'habite ici depuis 2010)
+                    <br>• "venir de" + infinitief → iets dat net gebeurd is (passé récent, bijv. je viens de manger = ik heb net gegeten)
+                </em></p>
+            </div>
+        </div>
         <header>
             <h1>Franse werkwoorden leren</h1>
             <p class="subtitle">Oefen de vervoegingen van veelgebruikte Franse werkwoorden</p>
@@ -41,6 +119,7 @@
                 <div class="button-group">
                     <button id="showBtn">Toon vervoegingen</button>
                     <button id="quizBtn" class="secondary">Start quiz</button>
+                    <button id="tenseWordBtn" class="secondary">Tijdswoorden</button>
                 </div>
             </div>
 
