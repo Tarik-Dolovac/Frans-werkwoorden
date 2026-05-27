@@ -290,12 +290,13 @@ const verbs = {
     present: ["faut"],
     passeCompose: ["a fallu"],
     imparfait: ["fallait"],
+    futurProche: ["va falloir"],
     futurSimple: ["faudra"],
     conditionnel: ["faudrait"],
     examples: [
       {fr: "Il faut étudier pour réussir.", nl: "Men moet studeren om te slagen."},
       {fr: "Il faut partir maintenant.", nl: "Men moet nu vertrekken."},
-      {fr: "Il faut boire de l'eau chaque jour.", nl: "Men moet elke dag water drinken."}
+      {fr: "Il faut boire de l'eau elke dag.", nl: "Men moet elke dag water drinken."}
     ]
   },
   "Pleuvoir": {
@@ -303,6 +304,7 @@ const verbs = {
     present: ["pleut"],
     passeCompose: ["a plu"],
     imparfait: ["pleuvait"],
+    futurProche: ["va pleuvoir"],
     futurSimple: ["pleuvra"],
     conditionnel: ["pleuvrait"],
     examples: [
